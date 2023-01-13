@@ -34,7 +34,7 @@ class IndexView(generic.ListView):
 #    def get_queryset(self):
 #        return Question.objects.filter(Question, pk='question_id')
 def questionview(request, poll_id):
-    poll_questions = Question.objects.filter(pk=poll_id)
+    poll_questions = Question.objects.filter(poll_id=poll_id)  #all() #filter(pk=poll_id)
     context = {
     'poll_questions': poll_questions,
     }
