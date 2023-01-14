@@ -20,7 +20,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_poll_list'
 
     def get_queryset(self):
-        return Poll.objects.order_by('-date_pub')
+        return Poll.objects.order_by('date_pub')
 
 
 #def detail(request, question_id):
@@ -34,7 +34,7 @@ class IndexView(generic.ListView):
 #    def get_queryset(self):
 #        return Question.objects.filter(Question, pk='question_id')
 def questionview(request, poll_id):
-    poll_questions = Question.objects.filter(poll_id=poll_id)  #all() #filter(pk=poll_id)
+    poll_questions = Question.objects.filter(poll_id=poll_id) 
     context = {
     'poll_questions': poll_questions,
     }
@@ -42,8 +42,6 @@ def questionview(request, poll_id):
 #   question = get_object_or_404(Question, pk=question_id)
     return render(request, 'appstat/questions.html', context)
     
-
-
 
 #def results(request, question_id):
 #    question = get_object_or_404(Question, pk=question_id)
