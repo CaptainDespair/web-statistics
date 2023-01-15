@@ -35,20 +35,20 @@ class IndexView(generic.ListView):
 #        return Question.objects.filter(Question, pk='question_id')
 def questionview(request, poll_id):
     poll_questions = Question.objects.filter(poll_id=poll_id) 
+    polling_name = Poll.objects.get(pk=poll_id)
     context = {
     'poll_questions': poll_questions,
+    'polling_name': polling_name,
     }
-#    return render(request, 'appstat/index.html', context)
-#   question = get_object_or_404(Question, pk=question_id)
     return render(request, 'appstat/questions.html', context)
+   
     
-
-#def results(request, question_id):
-#    question = get_object_or_404(Question, pk=question_id)
-#    return render(request, 'appstat/results.html', {'question': question})
-class ResultsView(generic.DetailView):
-    model = Question
-    template_name = 'appstat/results.html'
+def results(request, poll_id):
+    question = get_object_or_404(Question, pk=poll_id)
+    return render(request, 'appstat/results.html', {'question': question})
+#class ResultsView(generic.DetailView):
+#    model = Poll
+#    template_name = 'appstat/results.html'
 
     
 def vote(request, question_id):
@@ -56,7 +56,7 @@ def vote(request, question_id):
     try:
         selected_choice = question.choices.get(pk=request.POST['choice']) 
     except (KeyError, Choice.DoesNotExist):
-        return render(request, 'appstat/detail.html', {
+        return render(request, 'appstat/questions.html', {
             'question': question,
             'error_message':'You did not select a choice',
         })

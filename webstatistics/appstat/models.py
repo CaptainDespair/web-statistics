@@ -7,8 +7,7 @@ class Poll(models.Model):
 
     def __str__(self):
         return self.name
-
-    
+ 
     class Meta:
         verbose_name_plural = 'Polls'
 
@@ -20,7 +19,6 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
-  
     class Meta:
         verbose_name_plural = 'Questions'
 
@@ -32,7 +30,6 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
-
-
+        
     class Meta:
         verbose_name_plural = 'Choices'

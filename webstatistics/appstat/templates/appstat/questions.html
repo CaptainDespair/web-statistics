@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <title>Questions</title>
   </head>
-  <body> 
+  <body>
+    <h1><p align="center">{{ polling_name }}</p></h1>
     <h3>
       {% if poll_questions %}
       <ul>
@@ -19,12 +20,12 @@
                     <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
                 {% endfor %}
             </fieldset>
-            <input type="submit" value="Vote">
+            <input type="submit" value="Голосовать">
             </form>
       {% endfor %}
       </ul>
     {% else %}
-      <p>Вопросы отсуствуют.</p>
+      <h1><p align="center">Вопросы отсуствуют или такого опроса не существует</p></h1>
     {% endif %}
     </h3> 
   </body>
