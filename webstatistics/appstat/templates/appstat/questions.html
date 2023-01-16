@@ -4,24 +4,35 @@
     <meta charset="utf-8" />
     <title>Questions</title>
   </head>
-  <body>
-    <h1><p align="center">{{ polling_name }}</p></h1>
+  <body>     
+    <h1>
+      <center>
+        <p style="background-color:#b0fca6;
+                  border:1px solid rgba(0, 18, 46, 0.932); 
+                  border-radius:10px; 
+                  width: 400px; 
+                  text-align:center;  
+                  margin:20px; 
+                  padding:20px;"
+        >{{ polling_name }}</p>
+      </center>   
+    </h1>
     <h3>
       {% if poll_questions %}
       <ul>
       {% for question in poll_questions %}
-          <form action="{% url 'polling:results' question.id %}" method="post">
-            {% csrf_token %}
-            <fieldset>
-                <legend><h1>{{ question.question_text }}</h1></legend>
-                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                {% for choice in question.choices.all %}
-                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-                {% endfor %}
-            </fieldset>
-            <input type="submit" value="Голосовать">
-            </form>
+        <form action="{% url 'polling:results' polling_name.id %}" method="post">
+          {% csrf_token %}
+          <fieldset>
+            <legend><h1>{{ question.question_text }}</h1></legend>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            {% for choice in question.choices.all %}
+              <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+              <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+            {% endfor %}
+          </fieldset>
+          <input type="submit" value="Голосовать">
+        </form>
       {% endfor %}
       </ul>
     {% else %}

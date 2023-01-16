@@ -37,18 +37,20 @@ def questionview(request, poll_id):
     poll_questions = Question.objects.filter(poll_id=poll_id) 
     polling_name = Poll.objects.get(pk=poll_id)
     context = {
-    'poll_questions': poll_questions,
-    'polling_name': polling_name,
+        'poll_questions': poll_questions,
+        'polling_name': polling_name,
     }
     return render(request, 'appstat/questions.html', context)
    
     
 def results(request, poll_id):
     question = get_object_or_404(Question, pk=poll_id)
-    return render(request, 'appstat/results.html', {'question': question})
-#class ResultsView(generic.DetailView):
-#    model = Poll
-#    template_name = 'appstat/results.html'
+    polling_name = Poll.objects.get(pk=poll_id)
+    context = {
+        'question': question,
+        'polling_name': polling_name,
+    }
+    return render(request, 'appstat/results.html', context)
 
     
 def vote(request, question_id):
