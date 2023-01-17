@@ -46,15 +46,6 @@ def questionview(request, poll_id):
 def results(request, poll_id):
     question = get_object_or_404(Question, pk=poll_id)
     polling_name = Poll.objects.get(pk=poll_id)
-    context = {
-        'question': question,
-        'polling_name': polling_name,
-    }
-    return render(request, 'appstat/results.html', context)
-
-    
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choices.get(pk=request.POST['choice']) 
     except (KeyError, Choice.DoesNotExist):
@@ -65,6 +56,12 @@ def vote(request, question_id):
     else: 
         selected_choice.votes +=1
         selected_choice.save()
-    return HttpResponseRedirect(reverse('polling:results'), args=(question.id,))
+    context = {
+        'question': question,
+        'polling_name': polling_name,
+    }
+    return render(request, 'appstat/results.html', context)
+
+    
 
 

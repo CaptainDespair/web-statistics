@@ -18,10 +18,13 @@
       </center>   
     </h1>
     <h2>
+
+        {{ question.question_text }}
         {% for choice in question.choices.all %}
           <ul>{{ choice.choice_text }} : {{ choice.votes }} голосов{{ choice.vote|pluralize }}</ul>
         {% endfor %}
-    <ul><a href="{% url 'polling:questions' question.id %}">Голосовать снова?</a></ul>
+
+    <ul><a href="{% url 'polling:questions' polling_name.id %}">Голосовать снова?</a></ul>
   </h2>
   </body>
 </html>
