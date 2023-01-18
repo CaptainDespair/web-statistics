@@ -7,7 +7,7 @@
   <body>
     <h1>
       <center>
-        <p style="background-color:#e0ffdc;
+        <p style="background-color:#d5ed4a;
                   border:1px solid rgba(0, 18, 46, 0.932); 
                   border-radius:10px; 
                   width: 600px; 
@@ -19,7 +19,6 @@
     </h1>
     <h2>
 
-        {{ question.question_text }}
         {% for choice in question.choices.all %}
           <ul>{{ choice.choice_text }} : {{ choice.votes }} голосов{{ choice.vote|pluralize }}</ul>
         {% endfor %}
