@@ -5,7 +5,7 @@
     <title>Questions</title>
   </head>
   <body>
-    {% if poll_questions %}  
+
     <h1>
       <center>
         <p style="background-color:#f4f75e;
@@ -20,43 +20,21 @@
     </h1>   
     <h3>
       <ul>
-      {% for question in poll_questions %}
-        <fieldset>
-          <legend><h1>{{ question.question_text }}</h1></legend>
-          {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-          {% for choice in question.choices.all %}
-          <form action="{% url 'polling:results' polling_name.id %}" method="post"></form>
-            <input type="radio" name="{{ question }}" id="choice{{ forloop.counter }}" value="{{ choice.choice_text }}">
-            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        <form action="{% url 'polling:results' polling_name.id %}" method="post">
+          {% csrf_token %}
+            {% for question in poll_questions %}
+              <fieldset>
+                <legend><h1>{{ question.question_text }}</h1></legend>
+                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                {% for choice in question.choices.all %}
+                  <input type="radio" name="{{ question }}" id="choice{{ forloop.counter }}" value="{{ choice.choice_text }}">
+                  <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                {% endfor %}
+              </fieldset>
           {% endfor %}
-        </fieldset>
-      {% endfor %}
-      <form action="{% url 'polling:results' polling_name.id %}" method="post">
-        {% csrf_token %}
         <input type="submit" value="Голосовать">
       </form>
       </ul>
-    {% else %}
-      <h1>
-        <h1>
-          <center>
-            <p style="background-color:#f78f5e;
-                      border:1px solid rgba(0, 18, 46, 0.932); 
-                      border-radius:10px; 
-                      width: 600px; 
-                      text-align:center;  
-                      margin:20px; 
-                      padding:20px;"
-            >Проголосуйте во всех вопросах</p>
-            <input 
-              type="button" 
-              onclick="history.back(-2); 
-              return false;" 
-              value="Вернуться к опросу"/>
-          </center>   
-        </h1>   
-      </h1>
-    {% endif %}
     </h3> 
   </body>
 </html>
