@@ -44,22 +44,20 @@ def questionview(request, poll_id):
    
     
 def results(request, poll_id):
-    poll_questions = Question.objects.filter(poll_id=poll_id)  
-    #cho = Choice.objects.get(question_id=Question.question_id)
-    #question = get_object_or_404(Question, pk=poll_id)
+    poll_questions = Question.objects.filter(poll_id=poll_id)
     polling_name = Poll.objects.get(pk=poll_id)
-    # for question in poll_questions:
-    #     selected_choice = question.cho.get(pk=request.POST['choice']) 
-    #     selected_choice.votes +=1
-    #     selected_choice.save()
+    for question in poll_questions:
+        print(question.poll)
+        print(question)
+        print(question.id) 
+        selected_choice = question.choices.get(pk=request.POST[question.question_text]) 
+        selected_choice.votes +=1
+        selected_choice.save()
     context = {
         'poll_questions' : poll_questions,
-        #'question': question,
-        'polling_name': polling_name,
+        'polling_name': polling_name,    
     }
     return render(request, 'appstat/results.html', context)
-
-    
 
 #   try:
 #         selected_choice = question.choices.get(pk=request.POST['choice']) 
