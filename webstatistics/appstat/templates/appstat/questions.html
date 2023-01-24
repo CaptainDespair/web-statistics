@@ -17,25 +17,25 @@
                   padding:20px;"
         >{{ polling_name }}</p>
       </center>   
-    </h1>   
-    <h3>
-      <ul>
-        <form action="{% url 'polling:results' polling_name.id %}" method="post">
-          {% csrf_token %}
-            {% for question in poll_questions %}
-              <fieldset>
-                <legend><h1>{{ question.question_text }}</h1></legend>
-                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                {% for choice in question.choices.all %}
-                  <input type="radio" name="{{ question }}" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                  <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-                {% endfor %}
-              </fieldset>
-          {% endfor %}
-        <input type="submit" value="Голосовать">
-      </form>
-      </ul>
-    </h3> 
+    </h1> 
+      <h3>
+        <ul>
+          <form action="{% url 'polling:results' polling_name.id %}" method="post">
+            {% csrf_token %}
+              {% for question in poll_questions %}
+                <fieldset>  
+                  <legend><h1>{{ question.question_text }}</h1></legend>
+                  {% for choice in question.choices.all %}
+                    <input type="radio" name="{{ question }}" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                  {% endfor %}
+                </fieldset>
+            {% endfor %}
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <input type="submit" value="Голосовать">
+        </form>
+        </ul>
+      </h3> 
   </body>
 </html>
 
