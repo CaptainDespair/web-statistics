@@ -22,6 +22,7 @@
         <ul>
           <form action="{% url 'polling:results' polling_name.id %}" method="post">
             {% csrf_token %}
+            
               {% for question in poll_questions %}
                 <fieldset>  
                   <legend><h1>{{ question.question_text }}</h1></legend>
