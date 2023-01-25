@@ -5,16 +5,36 @@
     <title>Polls</title>
   </head>
   <body>
-    <h1>
-      <p align="center">Выберете опрос, чтобы участвовать в голосовании</p>
+    <h1>  
+      <center>
+        <p style="background-color:#f4f75e;
+                  border:10px solid rgba(0, 18, 46, 0.932); 
+                  border-radius:50px; 
+                  width: 1000px; 
+                  text-align:center;  
+                  margin:20px; 
+                  padding:20px;"
+        >ОПРОСЫ</p>
+      </center> 
+     </p>
     </h1>
-    <h1>
     {% if latest_poll_list %}
-      <ul>
         {% for poll in latest_poll_list %}
+        <h1>  
+          <center>
+            <p style="background-color:#a5ef44;
+                      border:5px solid rgba(0, 18, 46, 0.932); 
+                      border-radius:50px; 
+                      width: 300px; 
+                      text-align:center;  
+                      margin:20px; 
+                      padding:20px;"
           <li><a href="{% url 'polling:questions' poll.id %}">{{ poll.name }}</a></li>
+          </p>
+        </center> 
+       </p>
+      </h1>
         {% endfor %}
-      </ul>
     {% else %}
       <p>Нет доступных опросов.</p>
     {% endif %}

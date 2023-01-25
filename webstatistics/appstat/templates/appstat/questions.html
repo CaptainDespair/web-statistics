@@ -5,24 +5,25 @@
     <title>Questions</title>
   </head>
   <body>
-
     <h1>
       <center>
         <p style="background-color:#f4f75e;
-                  border:1px solid rgba(0, 18, 46, 0.932); 
-                  border-radius:10px; 
+                  border:10px solid rgba(0, 18, 46, 0.932); 
+                  border-radius:50px; 
                   width: 400px; 
                   text-align:center;  
                   margin:20px; 
                   padding:20px;"
         >{{ polling_name }}</p>
+        <form action="/polling/" method="get">
+          <button><h3>Вернуться к списку опросов</h3></button>
+        </form>
       </center>   
     </h1> 
       <h3>
         <ul>
           <form action="{% url 'polling:results' polling_name.id %}" method="post">
             {% csrf_token %}
-            
               {% for question in poll_questions %}
                 <fieldset>  
                   <legend><h1>{{ question.question_text }}</h1></legend>
@@ -39,5 +40,3 @@
       </h3> 
   </body>
 </html>
-
-
