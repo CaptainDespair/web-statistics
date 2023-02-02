@@ -1,4 +1,7 @@
+import datetime
+
 from django.db import models
+from django.utils import timezone
 
 
 class Poll(models.Model):
@@ -7,7 +10,11 @@ class Poll(models.Model):
 
     def __str__(self):
         return self.name
- 
+
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.date_pub <= now
+
     class Meta:
         verbose_name_plural = 'Polls'
 
