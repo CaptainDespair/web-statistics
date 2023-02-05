@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
+from django.utils import timezone
+
 from .models import Question, Choice, Poll
 
 
@@ -8,7 +10,8 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_poll_list'
 
     def get_queryset(self):
-        return Poll.objects.order_by('date_pub')
+        """Return the last ten published polls (not including future)."""
+        return Poll.objects.filter(date_pub__lte=timezone.now()).order_by('date_pub')[:10]
 
 
 def questionview(request, poll_id):

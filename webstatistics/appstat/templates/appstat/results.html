@@ -1,3 +1,6 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'appstat/style3.css' %}">
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -16,7 +19,7 @@
                   padding:20px;"
         >Результаты голсования опроса: "{{ polling_name }}"</p>
         <form action="/polling/" method="get">
-          <button><h3>Вернуться к списку опросов</h3></button>
+          <button class="button">К опросам</button>
         </form>
       </center>   
     </h1>

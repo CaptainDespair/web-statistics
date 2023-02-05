@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'appstat/style2.css' %}">
+{% load bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -16,7 +20,7 @@
                   padding:20px;"
         >{{ polling_name }}</p>
         <form action="/polling/" method="get">
-          <button><h3>Вернуться к списку опросов</h3></button>
+          <button class="button">К опросам</button>
         </form>
       </center>   
     </h1> 
@@ -26,12 +30,13 @@
             {% csrf_token %}
               {% for question in poll_questions %}
                 <fieldset>  
-                  <legend><h1>{{ question.question_text }}</h1></legend>
+                <legend><h1>{{ question.question_text }}</h1></legend>
                   {% for choice in question.choices.all %}
                     <input type="radio" name="{{ question }}" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
                     <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
                   {% endfor %}
                 </fieldset>
+              </p>
             {% endfor %}
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
             <input type="submit" value="Голосовать">
