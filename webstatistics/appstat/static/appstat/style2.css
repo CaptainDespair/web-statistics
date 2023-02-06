@@ -2,6 +2,16 @@ body {
     background: rgb(157, 157, 238);
 }
 
+.name {
+    background-color:#f4f75e;
+    border:10px solid rgba(0, 18, 46, 0.932); 
+    border-radius:50px; 
+    width: 400px; 
+    text-align:center;  
+    margin:20px; 
+    padding:20px;
+}
+
 .button {
     background-color: #5ef77f;
     border-radius:50px;
@@ -15,4 +25,66 @@ body {
     transition: 0.3s;
     cursor: pointer;
   }
-  .button:hover {opacity: 1}
+.button:hover {opacity: 1}
+
+.submit {
+    background-color: #dcffffe3;
+    border-radius:50px;
+    border: 4px solid rgba(0, 0, 0, 0.932); 
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 20px;
+    margin: 4px 2px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+input[type="radio"] {         
+    margin: 0;
+    font: inherit;   
+    width: 2em;
+    height: 1em;
+    border: 4em solid currentColor;
+    border-radius: 100%;
+}
+
+.fieldset {
+    border-color:rgba(0, 0, 0, 0.451);
+    border-width: 3px;
+    border-radius : 50px;
+}
+
+.error {
+    font-weight: 400px; 
+    font-size: 30px;
+    color: #0a132d;
+    width: 1000px; 
+    text-align:center;  
+    padding:1px;
+}
+
+.error-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    text-transform: uppercase;
+    font-size: 30px;
+    letter-spacing: 2px;
+    background: linear-gradient(10deg, #020000, #003e95, #120000);
+    background-repeat:round;
+    background-size: 80%;
+    animation: animate 5s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+  
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}

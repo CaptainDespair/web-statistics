@@ -1,6 +1,5 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'appstat/style2.css' %}">
-{% load bootstrap5 %}
 
 <!DOCTYPE html>
 <html lang="en-US">
@@ -11,37 +10,30 @@
   <body>
     <h1>
       <center>
-        <p style="background-color:#f4f75e;
-                  border:10px solid rgba(0, 18, 46, 0.932); 
-                  border-radius:50px; 
-                  width: 400px; 
-                  text-align:center;  
-                  margin:20px; 
-                  padding:20px;"
-        >{{ polling_name }}</p>
+        <p class="name">{{ polling_name }}</p>
         <form action="/polling/" method="get">
           <button class="button">К опросам</button>
         </form>
       </center>   
     </h1> 
       <h3>
+        {% if error_message %}<center><p class="error-message">{{ error_message }}</center></p>{% endif %}
         <ul>
           <form action="{% url 'polling:results' polling_name.id %}" method="post">
             {% csrf_token %}
-              {% for question in poll_questions %}
-                <fieldset>  
+            {% for question in poll_questions %}
+              <fieldset class="fieldset">
                 <legend><h1>{{ question.question_text }}</h1></legend>
                   {% for choice in question.choices.all %}
-                    <input type="radio" name="{{ question }}" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                    <h2><input type="radio" name="{{ question }}" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br></h2>
                   {% endfor %}
                 </fieldset>
               </p>
             {% endfor %}
-            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-            <input type="submit" value="Голосовать">
-        </form>
-        </ul>
-      </h3> 
+         </ul>
+        <center><input type="submit" class="submit" value="Голосовать"></center>
+      </form> 
+    </h3> 
   </body>
 </html>
