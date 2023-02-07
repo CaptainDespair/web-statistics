@@ -17,16 +17,16 @@
       </center>   
     </h1>
     <ul> 
-      {% for max_choice in max_questions %}
-      {{ max_choice}}
-      {% endfor %}
       {% for ques in poll_questions %} 
-          <h1><p class="question">Вопрос: {{ ques.question_text }}</p></h1>
+        <h1><p class="question">Вопрос: {{ ques.question_text }}</p></h1>
           {% for choice in ques.choices.all %}
-            <ul><li><p class="choice">{{ choice.choice_text }}:<p class="votes">{{ choice.votes }}</p></p></li></ul>
+            {% if choice in selected_choice_list %}
+              <p class="choice"> Ваш голос за "{{ choice }}": <p class="votes">{{ choice.votes }}</p></p>
+            {% else %}
+              <ul><li><p class="choice">{{ choice.choice_text }} : {{ choice.votes }}</p></li></ul>
+            {% endif %}
           {% endfor %}
-          <br>
-        
+        <br>
       {% endfor %}
     </ul>
     <center>
