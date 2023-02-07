@@ -10,28 +10,29 @@
   <body>
     <h1>
       <center>
-        <p style="background-color:#f4f75e;
-                  border:10px solid rgba(0, 18, 46, 0.932); 
-                  border-radius:50px; 
-                  width: 600px; 
-                  text-align:center;  
-                  margin:20px; 
-                  padding:20px;"
-        >Результаты голсования опроса: "{{ polling_name }}"</p>
-        <form action="/polling/" method="get">
+        <p class="name">Результаты голсования опроса: "{{ polling_name }}"</p>
+        <form action="/polling" method="get">
           <button class="button">К опросам</button>
         </form>
       </center>   
     </h1>
-    <h2>
-      {% for ques in poll_questions %}
-        {{ ques.question_text }}
-        {% for choice in ques.choices.all %}
-          <ul>{{ choice.choice_text }} : {{ choice.votes }} голосов{{ choice.vote|pluralize }}</ul>
-        {% endfor %}
+    <ul> 
+      {% for max_choice in max_questions %}
+      {{ max_choice}}
       {% endfor %}
-
-    <ul><a href="{% url 'polling:questions' polling_name.id %}">Голосовать снова?</a></ul>
-  </h2>
+      {% for ques in poll_questions %} 
+          <h1><p class="question">Вопрос: {{ ques.question_text }}</p></h1>
+          {% for choice in ques.choices.all %}
+            <ul><li><p class="choice">{{ choice.choice_text }}:<p class="votes">{{ choice.votes }}</p></p></li></ul>
+          {% endfor %}
+          <br>
+        
+      {% endfor %}
+    </ul>
+    <center>
+        <form action="{% url 'polling:questions' polling_name.id %}" method="get">
+          <button class="button2">Голосовать снова</button>
+        </form>
+    </center>
   </body>
 </html>
