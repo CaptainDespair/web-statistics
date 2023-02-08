@@ -6,7 +6,9 @@ body {
     background-color:#f4f75e;
     border:10px solid rgba(0, 18, 46, 0.932); 
     border-radius:50px; 
-    width: 400px; 
+    width: 600px; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
     text-align:center;  
     margin:20px; 
     padding:20px;
@@ -24,6 +26,7 @@ body {
     opacity: 0.8;
     transition: 0.3s;
     cursor: pointer;
+    font-weight: bold;
 }
 .button:hover {opacity: 1}
 
@@ -38,6 +41,7 @@ body {
     margin: 4px 2px;
     transition: 0.3s;
     cursor: pointer;
+    font-weight: bold;
 }
 
 input[type="radio"] {         
@@ -53,15 +57,10 @@ input[type="radio"] {
     border-color:rgba(0, 0, 0, 0.451);
     border-width: 3px;
     border-radius : 50px;
-}
-
-.error {
-    font-weight: 400px; 
-    font-size: 30px;
-    color: #0a132d;
-    width: 1000px; 
-    text-align:center;  
-    padding:1px;
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 15px;
+    margin:10px; 
+    padding:10px;
 }
 
 .error-message {
@@ -71,6 +70,7 @@ input[type="radio"] {
     height: 5vh;
     text-transform: uppercase;
     font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
     background: linear-gradient(10deg, #020000, #003e95, #120000);
     background-repeat:round;

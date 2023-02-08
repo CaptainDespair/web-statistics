@@ -2,6 +2,54 @@ body {
     background: rgb(238, 235, 157);
 }
 
+.name {
+    background-color:#f4f75e;
+    border:10px solid rgba(0, 18, 46, 0.932); 
+    border-radius:50px; 
+    width: 600px; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    text-align:center;  
+    margin:20px; 
+    padding:20px;
+}
+
+.question {
+    background-color:#fdff8a;
+    border:3px solid rgba(0, 18, 46, 0.932); 
+    border-radius:50px; 
+    width: 400px; 
+    text-align:center;
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 27px;
+    margin:10px; 
+    padding:10px;
+}
+
+.choice {
+    text-align:left; 
+    font-size: 23px; 
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+.selected_choice {
+    font-size: 23px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:rgba(0, 0, 0, 0.932);    
+    font-weight: bolder; 
+
+}
+
+.votes {
+    background-color:#fdff8a;
+    border:3px solid rgba(0, 18, 46, 0.932); 
+    border-radius:50px; 
+    width: 45px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:30px;
+    padding:0px 4px; 
+}
 
 .button {
     background-color: #5ef77f;
@@ -15,44 +63,9 @@ body {
     opacity: 0.8;
     transition: 0.3s;
     cursor: pointer;
+    font-weight: bold;
 }
 .button:hover {opacity: 1}
-
-.name {
-    background-color:#f4f75e;
-    border:10px solid rgba(0, 18, 46, 0.932); 
-    border-radius:50px; 
-    width: 600px; 
-    text-align:center;  
-    margin:20px; 
-    padding:20px;
-}
-
-.question {
-    background-color:#fdff8a;
-    border:3px solid rgba(0, 18, 46, 0.932); 
-    border-radius:50px; 
-    width: 400px; 
-    text-align:center;  
-    margin:10px; 
-    padding:10px;
-}
-
-.choice {
-    text-align:left; 
-    font-size: 23px;  
-    font-weight: bolder; 
-}
-
-.votes {
-    background-color:#fdff8a;
-    border:3px solid rgba(0, 18, 46, 0.932); 
-    border-radius:50px; 
-    width: 45px;
-    text-align: center;
-    font-size:30px;  
-    font-weight: bolder;
-}
 
 .button2 {
     background-color: #dcffffe3;
@@ -61,7 +74,10 @@ body {
     color: black;
     padding: 16px 32px;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     margin: 4px 2px;
     cursor: pointer;
+    font-weight: bolder;
 }
+

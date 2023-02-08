@@ -21,7 +21,7 @@
         <h1><p class="question">Вопрос: {{ ques.question_text }}</p></h1>
           {% for choice in ques.choices.all %}
             {% if choice in selected_choice_list %}
-              <p class="choice"> Ваш голос за "{{ choice }}": <p class="votes">{{ choice.votes }}</p></p>
+              <ul><li><p class="selected_choice">{{ choice }}: <span class="votes">{{ choice.votes }}</span></p></li></ul>
             {% else %}
               <ul><li><p class="choice">{{ choice.choice_text }} : {{ choice.votes }}</p></li></ul>
             {% endif %}
