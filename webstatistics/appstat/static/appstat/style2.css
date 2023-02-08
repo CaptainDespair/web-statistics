@@ -3,20 +3,20 @@ body {
 }
 
 .name {
-    background-color:#f4f75e;
-    border:10px solid rgba(0, 18, 46, 0.932); 
-    border-radius:50px; 
+    background-color: #f4f75e;
+    border: 10px solid rgba(0, 18, 46, 0.932); 
+    border-radius: 50px; 
     width: 600px; 
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
-    text-align:center;  
-    margin:20px; 
-    padding:20px;
+    text-align: center;  
+    margin: 20px; 
+    padding: 20px;
 }
 
 .button {
     background-color: #89e2f6;
-    border-radius:50px;
+    border-radius: 50px;
     border: 4px solid rgba(0, 18, 46, 0.932); 
     color: black;
     padding: 16px 32px;
@@ -32,7 +32,7 @@ body {
 
 .submit {
     background-color: #dcffffe3;
-    border-radius:50px;
+    border-radius: 50px;
     border: 4px solid rgba(0, 0, 0, 0.932); 
     color: black;
     padding: 16px 32px;
@@ -54,13 +54,13 @@ input[type="radio"] {
 }
 
 .fieldset {
-    border-color:rgba(0, 0, 0, 0.451);
+    border-color: rgba(0, 0, 0, 0.451);
     border-width: 3px;
     border-radius : 50px;
     font-family: Arial, Helvetica, sans-serif; 
     font-size: 15px;
-    margin:10px; 
-    padding:10px;
+    margin: 10px; 
+    padding: 10px;
 }
 
 .error-message {
@@ -73,7 +73,7 @@ input[type="radio"] {
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
     background: linear-gradient(10deg, #020000, #003e95, #120000);
-    background-repeat:round;
+    background-repeat: round;
     background-size: 80%;
     animation: animate 5s linear infinite;
     -webkit-background-clip: text;
