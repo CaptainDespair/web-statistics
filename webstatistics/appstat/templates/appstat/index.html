@@ -10,36 +10,17 @@
   <body>
     <h1>  
       <center>
-        <p style="background-color:#f4f75e;
-                  border:10px solid rgba(0, 18, 46, 0.932); 
-                  border-radius:50px; 
-                  width: 600px; 
-                  font-family: Arial, Helvetica, sans-serif;
-                  font-size: 30px;
-                  text-align:center;  
-                  margin:20px; 
-                  padding:20px;">
-          ОПРОСЫ
-        </p>
+        <p class="name">ОПРОСЫ</p>
       </center>   
     </h1>
     {% if latest_poll_list %}
       {% for poll in latest_poll_list %}
-      <h1>  
         <center>
-          <p style="background-color:#5ef77f;
-                    border:5px solid rgba(0, 18, 46, 0.932); 
-                    border-radius:50px; 
-                    width: 300px; 
-                    text-align:center;
-                    font-family: Arial, Helvetica, sans-serif;      
-                    margin:20px; 
-                    padding:20px;">
-            <a href="{% url 'polling:questions' poll.id %}">{{ poll.name }}</a>
-          </p>
+            <form action="{% url 'polling:questions' poll.id %}" method="get">
+              <button class="poll">{{ poll.name }}</button>
+            </form>
         </center> 
        </p>
-      </h1>
       {% endfor %}
     {% else %}
       <p>Нет доступных опросов.</p>
