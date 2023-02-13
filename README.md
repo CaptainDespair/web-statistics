@@ -39,3 +39,6 @@
 >docker-compose build
 
 >docker-compose up
+
+Вы можете скачать образ <b>captaindespair/webstatistics</b> прямо с https://hub.docker.com/, командой (при наличии докера на вашей ОС):
+>docker run -it -p 8000:8000  captaindespair/webstatistics python3 /webstatistics/manage.py runserver 0.0.0.0:8000
