@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  webstatistics:
+    build: .
+    command: python3 /webstatistics/manage.py runserver 0.0.0.0:8000
+    ports:
+      - '8000:8000' 
+      
+      

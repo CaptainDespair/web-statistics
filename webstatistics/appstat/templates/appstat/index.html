@@ -16,7 +16,7 @@
     {% if latest_poll_list %}
       {% for poll in latest_poll_list %}
         <center>
-            <form action="{% url 'polling:questions' poll.id %}" method="get">
+            <a href="{% url 'polling:questions' poll.id %}">
               <button class="poll">{{ poll.name }}</button>
             </form>
         </center> 
